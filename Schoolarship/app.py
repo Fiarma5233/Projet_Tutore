@@ -53,7 +53,7 @@ app = Flask(__name__)
 
 @app.route('/')
 
-@app.route('/run_scraping', methods=['GET'])
+@app.route('/run_scraping')
 def run_scraping():
     result = scrape_and_store_data()
     return result
