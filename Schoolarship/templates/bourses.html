@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+<li><a href="{{ url_for('about') }}">A Propos</a></li>
+
+<h1>Liste des Bourses</h1>
+    <table border="1">
+        <tr>
+            <th>Pays</th>
+            <th>Titre</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Niveau</th>
+            <th>Financement</th>
+            <th>Date Limite</th>
+            <th>Conditions</th>
+            <th>Nombre de bourses</th>
+            <th>Domaine Conserné</th>
+            <th>Durée d'étude</th>
+            <th>Pays éligibles</th>
+        </tr>
+        {% for bourse in bourses.bourses_senegal %}
+        <tr>
+            
+            <td>{{ bourse[1] }}</td>
+            <td>{{ bourse[2] }}</td>
+            <td>{{ bourse[3] }}</td>
+            <td>{{ bourse[4] }}</td>
+            <td>{{ bourse[5] }}</td>
+            <td>{{ bourse[6] }}</td>
+            <td>{{ bourse[7] }}</td>
+            <td>{{ bourse[8] }}</td>
+            <td>{{ bourse[9] }}</td>
+            <td>{{ bourse[10] }}</td>
+            <td>{{ bourse[11] }}</td>
+            <td>{{ bourse[12] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %} 

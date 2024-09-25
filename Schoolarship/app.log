@@ -1,0 +1,43 @@
+2024-09-25 17:41:24,405 - INFO - Scraping des données...
+2024-09-25 17:41:24,405 - INFO - ====== WebDriver manager ======
+2024-09-25 17:41:24,494 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:24,623 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:24,760 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:41:42,213 - INFO - ====== WebDriver manager ======
+2024-09-25 17:41:42,418 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:42,556 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:42,672 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:41:50,945 - INFO - ====== WebDriver manager ======
+2024-09-25 17:41:51,079 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:51,192 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:51,307 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:41:58,655 - INFO - ====== WebDriver manager ======
+2024-09-25 17:41:58,846 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:58,998 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:41:59,121 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:42:07,534 - INFO - ====== WebDriver manager ======
+2024-09-25 17:42:07,673 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:42:07,811 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:42:07,964 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:53:50,957 - INFO - ====== WebDriver manager ======
+2024-09-25 17:53:51,072 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:53:51,296 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:53:51,430 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:54:39,118 - INFO - ====== WebDriver manager ======
+2024-09-25 17:54:39,301 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:54:39,412 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:54:39,518 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 17:57:07,592 - INFO - ====== WebDriver manager ======
+2024-09-25 17:57:07,772 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:57:07,938 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 17:57:08,097 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 18:05:33,891 - INFO - ====== WebDriver manager ======
+2024-09-25 18:05:33,979 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 18:05:34,221 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 18:05:34,351 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 18:06:05,893 - INFO - ====== WebDriver manager ======
+2024-09-25 18:06:06,202 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 18:06:06,347 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-25 18:06:06,494 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
+2024-09-25 18:09:39,486 - INFO - Insertion des données dans PostgreSQL...
+2024-09-25 18:09:39,526 - INFO - Tâche de scraping et d'insertion terminée.

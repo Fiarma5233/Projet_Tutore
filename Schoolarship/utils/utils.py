@@ -109,6 +109,7 @@ import json
 import os
 import shutil
 import subprocess
+from webdriver_manager.chrome import ChromeDriverManager  # Import the class
 
 ###########
 
