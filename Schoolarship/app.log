@@ -41,3 +41,46 @@
 2024-09-25 18:06:06,494 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver-linux64/chromedriver] found in cache
 2024-09-25 18:09:39,486 - INFO - Insertion des données dans PostgreSQL...
 2024-09-25 18:09:39,526 - INFO - Tâche de scraping et d'insertion terminée.
+2024-09-26 10:39:29,045 - INFO - Scraping des données...
+2024-09-26 10:39:29,076 - INFO - ====== WebDriver manager ======
+2024-09-26 10:39:29,193 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:29,344 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:29,461 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:39:45,985 - INFO - ====== WebDriver manager ======
+2024-09-26 10:39:46,101 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:46,233 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:46,368 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:39:52,669 - INFO - ====== WebDriver manager ======
+2024-09-26 10:39:52,813 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:52,924 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:53,094 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:39:59,720 - INFO - ====== WebDriver manager ======
+2024-09-26 10:39:59,796 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:39:59,914 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:40:00,031 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:40:06,192 - INFO - ====== WebDriver manager ======
+2024-09-26 10:40:06,277 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:40:06,417 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:40:06,527 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:49:32,027 - INFO - ====== WebDriver manager ======
+2024-09-26 10:49:32,133 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:49:32,271 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:49:32,413 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:50:20,795 - INFO - ====== WebDriver manager ======
+2024-09-26 10:50:21,030 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:50:21,156 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:50:21,283 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 10:52:32,939 - INFO - ====== WebDriver manager ======
+2024-09-26 10:52:33,021 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:52:33,153 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 10:52:33,284 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 11:00:01,875 - INFO - ====== WebDriver manager ======
+2024-09-26 11:00:01,976 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 11:00:02,415 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 11:00:02,537 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 11:00:54,455 - INFO - ====== WebDriver manager ======
+2024-09-26 11:00:54,871 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 11:00:55,016 - INFO - Get LATEST chromedriver version for google-chrome
+2024-09-26 11:00:55,136 - INFO - Driver [/home/ser3nity/.wdm/drivers/chromedriver/linux64/129.0.6668.70/chromedriver] found in cache
+2024-09-26 11:04:18,390 - INFO - Insertion des données dans PostgreSQL...
+2024-09-26 11:04:19,131 - INFO - Tâche de scraping et d'insertion terminée.

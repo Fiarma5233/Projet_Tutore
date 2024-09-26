@@ -90,3 +90,340 @@ Les données ont été insérées avec succès.
 
 [5 rows x 13 columns]
 Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3160  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3154  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3154  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3160  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3154  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3    62  ...                                       Non spécifié
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3159  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3160  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3156  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+4    29  ...  ouvert à toutes les nationalités (étudiants ét...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4    29  ...  ouvert à toutes les nationalités (étudiants ét...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4    29  ...  ouvert à toutes les nationalités (étudiants ét...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4    25  ...                                       Non spécifié
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4    16  ...  ouvert aux candidats de toutes nationalités à ...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Nombre total de pages : 113
+Nombre total de pages : 9
+Nombre total de pages : 27
+Erreur lors du processus: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="login"]"}
+  (Session info: chrome=129.0.6668.58); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0x590802bb810a <unknown>
+#1 0x59080289e5e0 <unknown>
+#2 0x5908028edbe8 <unknown>
+#3 0x5908028ede81 <unknown>
+#4 0x5908029348c4 <unknown>
+#5 0x590802912b4d <unknown>
+#6 0x590802931d7d <unknown>
+#7 0x5908029128c3 <unknown>
+#8 0x5908028e06b3 <unknown>
+#9 0x5908028e168e <unknown>
+#10 0x590802b82b0b <unknown>
+#11 0x590802b86a91 <unknown>
+#12 0x590802b6f305 <unknown>
+#13 0x590802b87612 <unknown>
+#14 0x590802b5446f <unknown>
+#15 0x590802ba7008 <unknown>
+#16 0x590802ba71d3 <unknown>
+#17 0x590802bb6f5c <unknown>
+#18 0x747990494ac3 <unknown>
+
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.
+Erreur lors du processus: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="login"]"}
+  (Session info: chrome=129.0.6668.58); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0x61d17748310a <unknown>
+#1 0x61d1771695e0 <unknown>
+#2 0x61d1771b8be8 <unknown>
+#3 0x61d1771b8e81 <unknown>
+#4 0x61d1771ff8c4 <unknown>
+#5 0x61d1771ddb4d <unknown>
+#6 0x61d1771fcd7d <unknown>
+#7 0x61d1771dd8c3 <unknown>
+#8 0x61d1771ab6b3 <unknown>
+#9 0x61d1771ac68e <unknown>
+#10 0x61d17744db0b <unknown>
+#11 0x61d177451a91 <unknown>
+#12 0x61d17743a305 <unknown>
+#13 0x61d177452612 <unknown>
+#14 0x61d17741f46f <unknown>
+#15 0x61d177472008 <unknown>
+#16 0x61d1774721d3 <unknown>
+#17 0x61d177481f5c <unknown>
+#18 0x718600694ac3 <unknown>
+
+Connexion réussie à la base de données.
+Erreur lors de la création de la table: [Errno 2] No such file or directory: './databases/postgres_create_tables.sql'
+Les données ont été insérées avec succès.
+     id  ...                                     pays_eligibles
+0  3151  ...  https://www.campusfaso.bf/dossiers_candidature...
+1  3152  ...  https://www.campusfaso.bf/dossiers_candidature...
+2  3153  ...  https://www.campusfaso.bf/dossiers_candidature...
+3  3161  ...  https://www.campusfaso.bf/dossiers_candidature...
+4  3155  ...  https://www.campusfaso.bf/dossiers_candidature...
+
+[5 rows x 13 columns]
+Connexion fermée.

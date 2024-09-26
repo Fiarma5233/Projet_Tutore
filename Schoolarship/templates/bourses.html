@@ -5,38 +5,90 @@
 <li><a href="{{ url_for('about') }}">A Propos</a></li>
 
 <h1>Liste des Bourses</h1>
-    <table border="1">
-        <tr>
-            <th>Pays</th>
-            <th>Titre</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Niveau</th>
-            <th>Financement</th>
-            <th>Date Limite</th>
-            <th>Conditions</th>
-            <th>Nombre de bourses</th>
-            <th>Domaine Conserné</th>
-            <th>Durée d'étude</th>
-            <th>Pays éligibles</th>
-        </tr>
-        {% for bourse in bourses.bourses_senegal %}
-        <tr>
-            
-            <td>{{ bourse[1] }}</td>
-            <td>{{ bourse[2] }}</td>
-            <td>{{ bourse[3] }}</td>
-            <td>{{ bourse[4] }}</td>
-            <td>{{ bourse[5] }}</td>
-            <td>{{ bourse[6] }}</td>
-            <td>{{ bourse[7] }}</td>
-            <td>{{ bourse[8] }}</td>
-            <td>{{ bourse[9] }}</td>
-            <td>{{ bourse[10] }}</td>
-            <td>{{ bourse[11] }}</td>
-            <td>{{ bourse[12] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
 
-{% endblock content %} 
+<!-- Formulaire de recherche -->
+<form method="GET" action="{{ url_for('afficher_bourses') }}">
+    <input type="text" name="search" placeholder="Recherche par Pays, Titre, Niveau">
+    <button type="submit">Rechercher</button>
+</form>
+
+
+<table border="1">
+    <tr>
+        <th>Pays</th>
+        <th>Titre</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Niveau</th>
+        <th>Financement</th>
+        <th>Date Limite</th>
+        <th>Conditions</th>
+        <th>Nombre de bourses</th>
+        <th>Domaine Concerné</th>
+        <th>Durée d'étude</th>
+        <th>Pays éligibles</th>
+    </tr>
+    {% for bourse in opportunities.toutes_les_bourses %}
+    <tr>
+        <td>{{ bourse[1] }}</td> <!-- Pays -->
+        <td>{{ bourse[2] }}</td> <!-- Titre -->
+        <td>{{ bourse[3] }}</td> <!-- Type -->
+        <td>{{ bourse[4] }}</td> <!-- Description -->
+        <td>{{ bourse[5] }}</td> <!-- Niveau -->
+        
+        <!-- Vérification si "Financement" commence par "https://" -->
+        <td>
+            {% if bourse[6].startswith('https://') %}
+                <a href="{{ bourse[6] }}" target="_blank">{{ bourse[6] }}</a>
+            {% else %}
+                {{ bourse[6] }}
+            {% endif %}
+        </td>
+        
+        <td>{{ bourse[7] }}</td> <!-- Date Limite -->
+        
+        <!-- Affichage conditionnel des liens dans "Conditions" -->
+        <td>
+            {% if bourse[8] is iterable and not bourse[8] is string %}
+                {% set links = bourse[8] %}
+                {% for lien in links[:2] %}
+                    <a href="{{ lien }}" target="_blank">{{ lien }}</a><br>
+                {% endfor %}
+            {% else %}
+                <a href="{{ bourse[8] }}" target="_blank">{{ bourse[8] }}</a>
+            {% endif %}
+        </td>
+        
+        <td>{{ bourse[9] }}</td> <!-- Nombre de bourses -->
+        
+        <!-- Vérification si "Domaine Concerné" commence par "https://" -->
+        <td>
+            {% if bourse[10].startswith('https://') %}
+                <a href="{{ bourse[10] }}" target="_blank">{{ bourse[10] }}</a>
+            {% else %}
+                {{ bourse[10] }}
+            {% endif %}
+        </td>
+        
+        <!-- Vérification si "Durée d'étude" commence par "https://" -->
+        <td>
+            {% if bourse[11].startswith('https://') %}
+                <a href="{{ bourse[11] }}" target="_blank">{{ bourse[11] }}</a>
+            {% else %}
+                {{ bourse[11] }}
+            {% endif %}
+        </td>
+        
+        <!-- Vérification si "Pays éligibles" commence par "https://" -->
+        <td>
+            {% if bourse[12].startswith('https://') %}
+                <a href="{{ bourse[12] }}" target="_blank">{{ bourse[12] }}</a>
+            {% else %}
+                {{ bourse[12] }}
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}
