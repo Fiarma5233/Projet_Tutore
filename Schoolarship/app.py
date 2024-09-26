@@ -1,7 +1,7 @@
 
 
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 #from apscheduler.schedulers.background import BackgroundScheduler
 #from scrapping.scheduler import job
 #from flask import Flask, render_template
@@ -21,14 +21,20 @@ def index():
     return render_template('index.html')
 
 # Route pour afficher les bourses
-@app.route('/bourses')
+# @app.route('/bourses')
+# def afficher_bourses():
+#     # Appeler la fonction pour récupérer les bourses depuis la base de données
+#     opportunities = get_all_bourses()
+
+#     # Passer les données au template pour affichage
+#     return render_template('bourses.html', opportunities=opportunities)
+
+
+@app.route('/bourses', methods=['GET'])
 def afficher_bourses():
-    # Appeler la fonction pour récupérer les bourses depuis la base de données
-    bourses = get_all_bourses()
-
-    # Passer les données au template pour affichage
-    return render_template('bourses.html', bourses=bourses)
-
+    search_term = request.args.get('search', '')
+    opportunities = get_all_bourses(search_term)
+    return render_template('bourses.html', opportunities=opportunities)
 
 @app.route('/about/')
 def about():
