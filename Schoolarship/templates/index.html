@@ -1,28 +1,44 @@
-{% extends "base.html" %}
 
-{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     
-<li><a href="{{ url_for('about') }}">A Propos</a></li>
-<a href="{{ url_for('afficher_bourses') }}">Bourses</a>
+    <!-- Inclure SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <!-- Ton contenu ici -->
 
-<h1>Index page</h1>
+    <!-- Inclure SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-
-
-<h2>A Fiarma</h2>
-<br>
-<hr>
-
-<br>
-<br>
-
-
-
-<h2>A propos</h2>
-<h2>A Fiarma</h2>
-<hr>
-
-<h2>A Fiarma</h2>
-<br>
-<hr>
-{% endblock content %} 
+    <!-- Ton script -->
+    <script>
+        // Vérifie si l'utilisateur a déjà répondu au popup
+        if (!localStorage.getItem('popupShown')) {
+            console.log("Affichage du popup");
+            Swal.fire({
+                title: "Souhaitez-vous recevoir des informations ?",
+                text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log("Redirection vers /login");
+                    window.location.href = "/login";
+                } else {
+                    console.log("Popup marqué comme montré");
+                    localStorage.setItem('popupShown', 'true');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
