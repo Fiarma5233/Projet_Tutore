@@ -427,6 +427,7 @@ Les données ont été insérées avec succès.
 
 [5 rows x 13 columns]
 Connexion fermée.
+<<<<<<< HEAD
 Nombre total de pages : 113
 Nombre total de pages : 9
 Nombre total de pages : 27
@@ -858,3 +859,5 @@ Les données ont été insérées avec succès.
 
 [5 rows x 13 columns]
 Connexion fermée.
+=======
+>>>>>>> 04a89009984532c691a7f0c41fc1da49a2887a59
