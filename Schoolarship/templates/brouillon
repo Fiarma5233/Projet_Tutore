@@ -1,0 +1,514 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Inclure SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    <!-- Ton contenu ici -->
+
+    <!-- Inclure SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Ton script -->
+    <script>
+        // Vérifie si l'utilisateur a déjà répondu au popup
+        if (!localStorage.getItem('popupShown')) {
+            console.log("Affichage du popup");
+            Swal.fire({
+                title: "Souhaitez-vous recevoir des informations ?",
+                text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log("Redirection vers /login");
+                    window.location.href = "/login";
+                } else {
+                    console.log("Popup marqué comme montré");
+                    localStorage.setItem('popupShown', 'true');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+ <!-- Inclure SweetAlert2 CSS -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+<li><a href="{{ url_for('about') }}">A Propos</a></li>
+<a href="{{ url_for('afficher_bourses') }}">Bourses</a>
+
+
+<!-- Ton contenu ici -->
+
+    <!-- Inclure SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Ton script -->
+    <script>
+        // Vérifie si l'utilisateur a déjà répondu au popup
+        if (!localStorage.getItem('popupShown')) {
+            console.log("Affichage du popup");
+            Swal.fire({
+                title: "Souhaitez-vous recevoir des informations ?",
+                text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log("Redirection vers /login");
+                    window.location.href = "/login";
+                } else {
+                    console.log("Popup marqué comme montré");
+                    localStorage.setItem('popupShown', 'true');
+                }
+            });
+        }
+    </script>
+
+
+<h1>Index page</h1>
+
+
+
+<h2>A Fiarma</h2>
+<br>
+<hr>
+
+<br>
+<br>
+
+
+
+<h2>A propos</h2>
+<h2>A Fiarma</h2>
+<hr>
+
+<h2>A Fiarma</h2>
+<br>
+<hr>
+{% endblock content %} 
+
+
+++++++++++++++++++++++++++++++++++++
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<li><a href="{{ url_for('about') }}">A Propos</a></li>
+<a href="{{ url_for('afficher_bourses') }}">Bourses</a>
+
+<h1>Index page</h1>
+
+<h2>A Fiarma</h2>
+<br>
+<hr>
+
+<br>
+<br>
+
+<h2>A propos</h2>
+<h2>A Fiarma</h2>
+<hr>
+
+<h2>A Fiarma</h2>
+<br>
+<hr>
+
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<script>
+    // Vérifie si le message doit être affiché
+    {% if message %}
+        Swal.fire({
+            title: {% if is_error %}"Erreur" {% else %}"Succès" {% endif %},
+            text: "{{ message }}",
+            icon: {% if is_error %}"error" {% else %}"success" {% endif %},
+            confirmButtonText: "OK"
+        }).then(() => {
+            // Redirection après avoir fermé l'alerte
+            window.location.href = "{{ url_for('index') }}"; // Redirige vers la page d'accueil
+        });
+    {% endif %}
+</script>
+
+{% endblock content %}
+
+
+################################
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<li><a href="{{ url_for('about') }}">A Propos</a></li>
+<a href="{{ url_for('afficher_bourses') }}">Bourses</a>
+
+<!-- Ton contenu ici -->
+
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<!-- Ton script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Vérifie si l'utilisateur a déjà répondu au popup
+        if (!localStorage.getItem('popupShown')) {
+            Swal.fire({
+                title: "Souhaitez-vous recevoir des informations ?",
+                text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/login";
+                } else {
+                    localStorage.setItem('popupShown', 'true');
+                }
+            });
+        }
+
+        // Vérifier les messages de succès ou d'erreur
+        {% if message %}
+            let iconType = "{{ 'success' if not is_error else 'error' }}";
+            Swal.fire({
+                title: "{{ message }}",
+                icon: iconType,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    window.location.href = "/";
+                }
+            });
+        {% endif %}
+    });
+</script>
+
+<h1>Index page</h1>
+
+<h2>A Fiarma</h2>
+<br>
+<hr>
+
+<br>
+<br>
+
+<h2>A propos</h2>
+<h2>A Fiarma</h2>
+<hr>
+
+<h2>A Fiarma</h2>
+<br>
+{% endblock %}
+ ################################
+
+ <!-- Ton contenu ici -->
+
+<!-- Inclure SweetAlert2 JS
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<!-- Ton script ->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Vérifie si l'utilisateur a déjà répondu au popup
+        if (!localStorage.getItem('popupShown')) {
+            Swal.fire({
+                title: "Souhaitez-vous recevoir des informations ?",
+                text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Oui",
+                cancelButtonText: "Non"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/login";
+                } else {
+                    localStorage.setItem('popupShown', 'true');
+                }
+            });
+        }
+
+        // Vérifier les messages de succès ou d'erreur
+        {% if message %}
+            let iconType = "{{ 'success' if not is_error else 'error' }}";
+            let titleColor = "{{ 'green' if not is_error else 'red' }}";  // Couleur selon le type
+            let backgroundColor = "{{ 'lightgreen' if not is_error else 'lightcoral' }}";  // Couleur de fond
+
+            Swal.fire({
+                title: "{{ message }}",
+                icon: iconType,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+                willClose: () => {
+                    window.location.href = "/";
+                },
+                customClass: {
+                    title: titleColor, // Appliquer la couleur du titre
+                    popup: backgroundColor // Appliquer la couleur de fond
+                }
+            });
+        {% endif %}
+    });
+</script> -->
+
+
+################################
+
+
+# import os
+# from flask import Flask, render_template, request
+# from dotenv import load_dotenv
+# from users.users_authentification import auth_blueprint, create_users_table
+# load_dotenv()  # Charge les variables d'environnement à partir du fichier .env
+# from databases.db import get_all_bourses  # Importer la fonction qui récupère les données de la base
+# from scrapping.utils import setup_scraping_environment, configure_chrome, load_env_variables
+# from utils.utils import install_python_dependencies, install_chrome_and_chromedriver
+
+# import os
+# os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+# app = Flask(__name__)
+# app.secret_key = os.getenv("SECRET_KEY")  # Charge la clé secrète depuis .env
+
+# create_users_table()
+# # Enregistrer le blueprint pour l'authentification
+# app.register_blueprint(auth_blueprint)
+
+
+
+
+# @app.route('/')
+# # def index():
+# #     return render_template('index.html')
+
+# @app.route('/')
+# def index():
+#     message = request.args.get('message', None)
+#     is_error = request.args.get('is_error', False)
+#     return render_template('index.html', message=message, is_error=is_error)
+
+# @app.route('/bourses', methods=['GET'])
+# def afficher_bourses():
+#     search_term = request.args.get('search', '')
+#     opportunities = get_all_bourses(search_term)
+#     return render_template('bourses.html', opportunities=opportunities)
+
+# @app.route('/about/')
+# def about():
+#     return render_template("about.html")
+
+# if __name__ == '__main__':
+#     install_chrome_and_chromedriver()
+#     #app.run(debug=True, ssl_context='adhoc')
+#     app.run(debug=True, ssl_context=None)
+
+################################
+
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Inclure SweetAlert2 CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> -->
+
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<!-- Inclure le fichier JavaScript que nous avons créé -->
+<script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+
+
+<!-- Liste de bourses -->
+<h1>Liste des Bourses</h1>
+
+<!-- Inclure le formulaire de recherche -->
+{% include 'includes/search_form.html' %}
+
+
+<!-- Affichage des bourses avec pagination -->
+<div class="bourses-container">
+    {% for i in range(0, opportunities.toutes_les_bourses|length, 6) %}
+        <div class="bourses-page" style="display: none;"> <!-- Cacher les pages par défaut -->
+            <div class="row">
+                {% for j in range(0, 6) %}
+                    {% if opportunities.toutes_les_bourses[i + j] is not none %}
+                        {% set bourse = opportunities.toutes_les_bourses[i + j] %}
+                        <div class="col-4">
+                            <div class="bourse-item">
+                                <!-- Image selon le type de bourse -->
+                                {% if bourse[3] == "Bourse" %}
+                                    <img src="{{ url_for('static', filename='images/bourse.png') }}" alt="Bourse" style="width: 100px; height: 100px;">
+                                {% elif bourse[3] == "Stage" %}
+                                    <img src="{{ url_for('static', filename='images/stage.jpeg') }}" alt="Stage" style="width: 100px; height: 100px;">
+                                {% elif bourse[3] == "Formation" %}
+                                    <img src="{{ url_for('static', filename='images/formation.jpeg') }}" alt="Formation" style="width: 100px; height: 100px;">
+                                {% endif %}
+                                
+                                <!-- Titre, pays, description, et bouton "Voir plus" -->
+                                <h3>{{ bourse[2] }}</h3> <!-- Titre -->
+                                <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
+                                <p>{{ bourse[4][:100] }}...</p> <!-- Description abrégée -->
+                                <a href="{{ url_for('details', bourse_id=bourse[0]) }}" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+    <button class="prev btn btn-secondary">Précédent</button>
+    <button class="next btn btn-secondary">Suivant</button>
+</div>
+
+{% endblock %}
+ ################################
+
+
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Inclure SweetAlert2 CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> -->
+
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<!-- Inclure le fichier JavaScript que nous avons créé -->
+<script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+
+
+<!-- Liste de bourses -->
+<h1>Liste des Bourses</h1>
+
+<!-- Inclure le formulaire de recherche -->
+{% include 'includes/search_form.html' %}
+
+
+<table border="1">
+    <tr>
+        <th>Pays</th>
+        <th>Titre</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Niveau</th>
+        <th>Financement</th>
+        <th>Date Limite</th>
+        <th>Conditions</th>
+        <th>Nombre de bourses</th>
+        <th>Domaine Concerné</th>
+        <th>Durée d'étude</th>
+        <th>Pays éligibles</th>
+    </tr>
+    {% for bourse in opportunities.toutes_les_bourses %}
+    <tr>
+        <td>{{ bourse[1] }}</td> <!-- Pays -->
+        <td>{{ bourse[2] }}</td> <!-- Titre -->
+        <td>{{ bourse[3] }}</td> <!-- Type -->
+        <td>{{ bourse[4] }}</td> <!-- Description -->
+        <td>{{ bourse[5] }}</td> <!-- Niveau -->
+        
+        <!-- Vérification si "Financement" commence par "https://" -->
+        <td>
+            {% if bourse[6].startswith('https://') %}
+                <a href="{{ bourse[6] }}" target="_blank">{{ bourse[6] }}</a>
+            {% else %}
+                {{ bourse[6] }}
+            {% endif %}
+        </td>
+        
+        <td>{{ bourse[7] }}</td> <!-- Date Limite -->
+        
+        <!-- Affichage conditionnel des liens dans "Conditions" -->
+        <td>
+            {% if bourse[8] is iterable and not bourse[8] is string %}
+                {% set links = bourse[8] %}
+                {% for lien in links[:2] %}
+                    <a href="{{ lien }}" target="_blank">{{ lien }}</a><br>
+                {% endfor %}
+            {% else %}
+                <a href="{{ bourse[8] }}" target="_blank">{{ bourse[8] }}</a>
+            {% endif %}
+        </td>
+        
+        <td>{{ bourse[9] }}</td> <!-- Nombre de bourses -->
+        
+        <!-- Vérification si "Domaine Concerné" commence par "https://" -->
+        <td>
+            {% if bourse[10].startswith('https://') %}
+                <a href="{{ bourse[10] }}" target="_blank">{{ bourse[10] }}</a>
+            {% else %}
+                {{ bourse[10] }}
+            {% endif %}
+        </td>
+        
+        <!-- Vérification si "Durée d'étude" commence par "https://" -->
+        <td>
+            {% if bourse[11].startswith('https://') %}
+                <a href="{{ bourse[11] }}" target="_blank">{{ bourse[11] }}</a>
+            {% else %}
+                {{ bourse[11] }}
+            {% endif %}
+        </td>
+        
+        <!-- Vérification si "Pays éligibles" commence par "https://" -->
+        <td>
+            {% if bourse[12].startswith('https://') %}
+                <a href="{{ bourse[12] }}" target="_blank">{{ bourse[12] }}</a>
+            {% else %}
+                {{ bourse[12] }}
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

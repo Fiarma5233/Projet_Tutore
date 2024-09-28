@@ -1,70 +1,15 @@
 
 
-<<<<<<< HEAD
-# import os
-# from flask import Flask, render_template, request
-# #from apscheduler.schedulers.background import BackgroundScheduler
-# #from scrapping.scheduler import job
-# #from flask import Flask, render_template
-# from utils.utils import install_python_dependencies, install_chrome_and_chromedriver
-# from scrapping.utils import setup_scraping_environment, configure_chrome, load_env_variables
-# #from scrapping.scheduler import run_scheduler_in_background
-# #from scrapping.scheduler import run_scheduler_in_background
-# from livereload import Server
-# from databases.db import get_all_bourses  # Importer la fonction qui récupère les données de la base
-# from dotenv import load_dotenv
-# from users.users_authentification import auth_blueprint, create_users_table  # Assurez-vous que le chemin est correct
-# load_dotenv()  # Charge les variables d'environnement à partir du fichier .env
-
-# app = Flask(__name__)
-# app.secret_key = os.getenv("SECRET_KEY")  # Charge la clé secrète depuis .env
-# #scheduler = BackgroundScheduler()
-
-# create_users_table()
-# # Enregistrer le blueprint pour l'authentification
-# app.register_blueprint(auth_blueprint)
-
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-# # Route pour afficher les bourses
-# # @app.route('/bourses')
-# # def afficher_bourses():
-# #     # Appeler la fonction pour récupérer les bourses depuis la base de données
-# #     opportunities = get_all_bourses()
-
-# #     # Passer les données au template pour affichage
-# #     return render_template('bourses.html', opportunities=opportunities)
-
-
-# @app.route('/bourses', methods=['GET'])
-# def afficher_bourses():
-#     search_term = request.args.get('search', '')
-#     opportunities = get_all_bourses(search_term)
-#     return render_template('bourses.html', opportunities=opportunities)
-
-# @app.route('/about/')
-# def about():
-#     return render_template("about.html")
-
-
-# if __name__ == '__main__':
-#     #install_python_dependencies()
-#     install_chrome_and_chromedriver()
-    
-    
-#     app.run(debug=True)
-#     # server = Server(app.wsgi_app)
-#     # server.serve()
-
 
 import os
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from users.users_authentification import auth_blueprint, create_users_table
+from databases.db import get_all_bourses, get_bourse_by_id  # Importer la fonction qui récupère les données de la base
+from utils.utils import install_python_dependencies, install_chrome_and_chromedriver
+
 load_dotenv()  # Charge les variables d'environnement à partir du fichier .env
-from databases.db import get_all_bourses  # Importer la fonction qui récupère les données de la base
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")  # Charge la clé secrète depuis .env
@@ -72,48 +17,45 @@ app.secret_key = os.getenv("SECRET_KEY")  # Charge la clé secrète depuis .env
 create_users_table()
 # Enregistrer le blueprint pour l'authentification
 app.register_blueprint(auth_blueprint)
-=======
 
-from flask import Flask, render_template, request
-#from apscheduler.schedulers.background import BackgroundScheduler
-#from scrapping.scheduler import job
-#from flask import Flask, render_template
-from utils.utils import install_python_dependencies, install_chrome_and_chromedriver
-from scrapping.utils import setup_scraping_environment, configure_chrome, load_env_variables
-#from scrapping.scheduler import run_scheduler_in_background
-#from scrapping.scheduler import run_scheduler_in_background
-from livereload import Server
-from databases.db import get_all_bourses  # Importer la fonction qui récupère les données de la base
+def get_paginated_opportunities(opportunities, page, per_page):
+    start = (page - 1) * per_page
+    end = start + per_page
+    return opportunities[start:end]
 
-app = Flask(__name__)
-
-#scheduler = BackgroundScheduler()
->>>>>>> 04a89009984532c691a7f0c41fc1da49a2887a59
-
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    message = request.args.get('message', None)
+    is_error = request.args.get('is_error', False)
+    search_term = request.args.get('search', '')
+    opportunities = get_all_bourses(search_term)
+    # Obtenez le numéro de page à partir des paramètres de la requête, avec 1 comme valeur par défaut
+    page = request.args.get('page', 1, type=int)
+    per_page = 6
 
-<<<<<<< HEAD
+    # Obtenez les bourses paginées
+    paginated_bourses = get_paginated_opportunities(opportunities['toutes_les_bourses'], page, per_page)
+
+    return render_template(
+        'index.html',
+        opportunities=paginated_bourses,
+        page=page, 
+        per_page=per_page,  # Assurez-vous que cette ligne est ajoutée
+        total=len(opportunities['toutes_les_bourses']),
+        message=message, 
+        is_error=is_error)
+
+@app.route('/details/<int:bourse_id>', methods=['GET'])
+def details(bourse_id):
+    bourse = get_bourse_by_id(bourse_id)  # Récupère la bourse avec l'ID donné
+    if bourse:
+        return render_template('detail.html', bourse=bourse)  # Remplace 'detail.html' par ton template
+    else:
+        return "Bourse non trouvée", 404
+    
 @app.route('/bourses', methods=['GET'])
 def afficher_bourses():
     search_term = request.args.get('search', '')
-    # Remplacer par la fonction appropriée pour récupérer les bourses
-=======
-# Route pour afficher les bourses
-# @app.route('/bourses')
-# def afficher_bourses():
-#     # Appeler la fonction pour récupérer les bourses depuis la base de données
-#     opportunities = get_all_bourses()
-
-#     # Passer les données au template pour affichage
-#     return render_template('bourses.html', opportunities=opportunities)
-
-
-@app.route('/bourses', methods=['GET'])
-def afficher_bourses():
-    search_term = request.args.get('search', '')
->>>>>>> 04a89009984532c691a7f0c41fc1da49a2887a59
     opportunities = get_all_bourses(search_term)
     return render_template('bourses.html', opportunities=opportunities)
 
@@ -121,17 +63,7 @@ def afficher_bourses():
 def about():
     return render_template("about.html")
 
-<<<<<<< HEAD
 if __name__ == '__main__':
-    app.run(debug=True, ssl_context='adhoc')
-=======
-
-if __name__ == '__main__':
-    #install_python_dependencies()
     install_chrome_and_chromedriver()
-    
-    
-    app.run(debug=True)
-    # server = Server(app.wsgi_app)
-    # server.serve()
->>>>>>> 04a89009984532c691a7f0c41fc1da49a2887a59
+    app.run(debug=True, ssl_context=None)
+

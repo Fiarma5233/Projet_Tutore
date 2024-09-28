@@ -1,75 +1,66 @@
-<<<<<<< HEAD
 
 
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <!-- Inclure SweetAlert2 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-</head>
-<body>
-    <!-- Ton contenu ici -->
-
-    <!-- Inclure SweetAlert2 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
-    <!-- Ton script -->
-    <script>
-        // Vérifie si l'utilisateur a déjà répondu au popup
-        if (!localStorage.getItem('popupShown')) {
-            console.log("Affichage du popup");
-            Swal.fire({
-                title: "Souhaitez-vous recevoir des informations ?",
-                text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui",
-                cancelButtonText: "Non"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    console.log("Redirection vers /login");
-                    window.location.href = "/login";
-                } else {
-                    console.log("Popup marqué comme montré");
-                    localStorage.setItem('popupShown', 'true');
-                }
-            });
-        }
-    </script>
-</body>
-</html>
-=======
 {% extends "base.html" %}
 
 {% block content %}
-    
-<li><a href="{{ url_for('about') }}">A Propos</a></li>
-<a href="{{ url_for('afficher_bourses') }}">Bourses</a>
+<!-- Inclure SweetAlert2 CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> -->
 
-<h1>Index page</h1>
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
-
-<h2>A Fiarma</h2>
-<br>
-<hr>
-
-<br>
-<br>
+<!-- Inclure le fichier JavaScript que nous avons créé -->
+<script src="{{ url_for('static', filename='js/popup.js') }}"></script>
 
 
+<!-- Liste de bourses -->
+<h1>Liste des Bourses</h1>
 
-<h2>A propos</h2>
-<h2>A Fiarma</h2>
-<hr>
+<!-- Inclure le formulaire de recherche -->
+{% include 'includes/search_form.html' %}
 
-<h2>A Fiarma</h2>
-<br>
-<hr>
-{% endblock content %} 
->>>>>>> 04a89009984532c691a7f0c41fc1da49a2887a59
+
+<!-- Affichage des bourses -->
+<div class="bourses-container">
+    <div class="row">
+        {% for bourse in opportunities %}
+            <div class="col-4">
+                <div class="bourse-item">
+                    <!-- Image selon le type de bourse -->
+                    {% if bourse[3] == "Bourse" %}
+                        <img src="{{ url_for('static', filename='images/bourse.png') }}" alt="Bourse" style="width: 100px; height: 100px;">
+                    {% elif bourse[3] == "Stage" %}
+                        <img src="{{ url_for('static', filename='images/stage.jpeg') }}" alt="Stage" style="width: 100px; height: 100px;">
+                    {% elif bourse[3] == "Formation" %}
+                        <img src="{{ url_for('static', filename='images/formation.jpeg') }}" alt="Formation" style="width: 100px; height: 100px;">
+                    {% endif %}
+                    
+                    <!-- Titre, pays, description, et bouton "Voir plus" -->
+                    <h3>{{ bourse[2] }}</h3> <!-- Titre -->
+                    <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
+                    <p>{{ bourse[4][:100] }}...</p> <!-- Description abrégée -->
+                    <a href="{{ url_for('details', bourse_id=bourse[0]) }}" class="btn btn-primary">Voir plus</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="pagination">
+    {% if page > 1 %}
+        <a href="?page={{ page - 1 }}&per_page={{ per_page }}">Précédent</a>
+    {% endif %}
+
+    <span>Page {{ page }}</span>
+
+    {% if page * per_page < total %}
+        <a href="?page={{ page + 1 }}&per_page={{ per_page }}">Suivant</a>
+    {% endif %}
+</div>
+
+{% endblock %}

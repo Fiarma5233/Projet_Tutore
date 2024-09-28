@@ -1,7 +1,8 @@
+# from flask import Flask, request, redirect, url_for, flash
 # import os
 # import psycopg2
 # import smtplib
-# from flask import Blueprint, redirect, request, session
+# from flask import Blueprint
 # from oauthlib.oauth2 import WebApplicationClient
 # import requests
 # from email.mime.text import MIMEText
@@ -27,47 +28,37 @@
 # SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")  # Ton mot de passe ou App Password
 
 # def create_users_table():
-#     # Chemin vers le fichier SQL
 #     sql_file_path = './users/users_table.sql'
     
-#     # Lire le contenu du fichier SQL
 #     with open(sql_file_path, 'r') as sql_file:
 #         sql_commands = sql_file.read()
 
-#     # Se connecter à la base de données
 #     conn = get_db_connection()
 #     cur = conn.cursor()
 
 #     try:
-#         # Exécuter les commandes SQL pour créer la table
 #         cur.execute(sql_commands)
 #         conn.commit()
 #         print("Table users créée avec succès.")
 #     except Exception as e:
 #         print(f"Erreur lors de la création de la table: {e}")
-#         conn.rollback()  # Revenir à l'état précédent en cas d'erreur
+#         conn.rollback()
 #     finally:
 #         cur.close()
 #         conn.close()
 
-# # Appelle cette fonction une seule fois lors de la configuration initiale
-# create_users_table()
-
 # def send_welcome_email(email, name):
-#     """Envoie un e-mail de bienvenue à l'utilisateur nouvellement inscrit."""
 #     subject = "Bienvenue aux informations sur les opportunités d'études"
 #     body = f"Bonjour {name},\n\nVous recevrez désormais des informations sur les nouvelles opportunités d'études disponibles.\n\nCordialement,\nL'équipe."
     
-#     # Créer l'e-mail
 #     msg = MIMEText(body)
 #     msg["Subject"] = subject
 #     msg["From"] = SMTP_USERNAME
 #     msg["To"] = email
     
-#     # Envoi de l'e-mail via SMTP
 #     try:
 #         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-#         server.starttls()  # Sécuriser la connexion
+#         server.starttls()
 #         server.login(SMTP_USERNAME, SMTP_PASSWORD)
 #         server.sendmail(SMTP_USERNAME, email, msg.as_string())
 #         server.quit()
@@ -75,27 +66,22 @@
 #     except smtplib.SMTPException as e:
 #         print(f"Erreur lors de l'envoi de l'e-mail à {email}: {e}")
 
-# # Route pour démarrer le processus d'authentification OAuth
 # @auth_blueprint.route("/login")
 # def login():
 #     google_provider_cfg = get_google_provider_cfg()
 #     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
-#     # Préparer la requête d'authentification
 #     request_uri = client.prepare_request_uri(
 #         authorization_endpoint,
-#         redirect_uri=request.base_url + "/callback",  # redirection après authentification
+#         redirect_uri="http://127.0.0.1:5000/login/callback",
 #         scope=["openid", "email", "profile"],
 #     )
 #     return redirect(request_uri)
 
-# # Callback après l'authentification Google
 # @auth_blueprint.route("/login/callback")
 # def callback():
-#     # Obtenir le code d'autorisation
 #     code = request.args.get("code")
 
-#     # Échanger le code d'autorisation contre un jeton d'accès
 #     google_provider_cfg = get_google_provider_cfg()
 #     token_endpoint = google_provider_cfg["token_endpoint"]
 #     token_url, headers, body = client.prepare_token_request(
@@ -111,58 +97,54 @@
 #         auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
 #     )
 
-#     # Parser la réponse du jeton
-#     client.parse_request_body_response(token_response.text)
+#     if token_response.status_code != 200:
+#         return redirect(url_for('/', message="Erreur lors de l'échange du code d'autorisation.", is_error=True))
 
-#     # Obtenir les informations de l'utilisateur depuis Google
+#     client.parse_request_body_response(token_response.text)
 #     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
 #     uri, headers, body = client.add_token(userinfo_endpoint)
 #     userinfo_response = requests.get(uri, headers=headers, data=body)
 
-#     # Extraire et stocker l'e-mail et le nom de l'utilisateur
+#     if userinfo_response.status_code != 200:
+#         return redirect(url_for('/', message="Erreur lors de la récupération des informations de l'utilisateur.", is_error=True))
+
 #     userinfo = userinfo_response.json()
 #     if userinfo.get("email_verified"):
 #         email = userinfo["email"]
-#         name = userinfo.get("name", "Nom inconnu")  # Extraire le nom ou mettre un nom par défaut
+#         name = userinfo.get("name", "Nom inconnu")
 
-#         # Stocker l'e-mail et le nom dans PostgreSQL, si l'utilisateur n'existe pas déjà
 #         conn = get_db_connection()
 #         cur = conn.cursor()
 #         try:
-#             # Insérer l'utilisateur uniquement s'il n'existe pas déjà
 #             cur.execute(
 #                 "INSERT INTO users (email, name) VALUES (%s, %s) ON CONFLICT (email) DO NOTHING",
 #                 (email, name)
 #             )
 #             conn.commit()
 #             if cur.rowcount > 0:
-#                 # L'utilisateur a été ajouté, envoyer l'e-mail de bienvenue
 #                 send_welcome_email(email, name)
 #                 message = f"Email {email} et nom {name} enregistrés avec succès ! Un e-mail de bienvenue a été envoyé."
+#                 return redirect(url_for('/', message=message, is_error=False))
 #             else:
-#                 # L'utilisateur existe déjà dans la base de données
 #                 message = f"L'utilisateur avec l'email {email} existe déjà."
-
+#                 return redirect(url_for('/', message=message, is_error=True))
 #         except Exception as e:
 #             conn.rollback()
-#             return f"Erreur lors de l'enregistrement : {e}", 500
+#             return redirect(url_for('/', message=f"Erreur lors de l'enregistrement : {e}", is_error=True))
 #         finally:
 #             cur.close()
 #             conn.close()
+#     return redirect(url_for('/', message="Erreur : l'utilisateur n'a pas de compte Google vérifié.", is_error=True))
 
-#         return message
-
-#     return "Erreur : l'utilisateur n'a pas de compte Google vérifié.", 400
-
-# # Fonction pour obtenir les informations de Google
 # def get_google_provider_cfg():
 #     return requests.get(GOOGLE_DISCOVERY_URL).json()
 
 
+from flask import Flask, request, redirect, url_for, flash
 import os
 import psycopg2
 import smtplib
-from flask import Blueprint, redirect, request, session
+from flask import Blueprint
 from oauthlib.oauth2 import WebApplicationClient
 import requests
 from email.mime.text import MIMEText
@@ -188,44 +170,37 @@ SMTP_USERNAME = os.getenv("SMTP_USERNAME")  # Ton adresse Gmail
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")  # Ton mot de passe ou App Password
 
 def create_users_table():
-    # Chemin vers le fichier SQL
     sql_file_path = './users/users_table.sql'
     
-    # Lire le contenu du fichier SQL
     with open(sql_file_path, 'r') as sql_file:
         sql_commands = sql_file.read()
 
-    # Se connecter à la base de données
     conn = get_db_connection()
     cur = conn.cursor()
 
     try:
-        # Exécuter les commandes SQL pour créer la table
         cur.execute(sql_commands)
         conn.commit()
         print("Table users créée avec succès.")
     except Exception as e:
         print(f"Erreur lors de la création de la table: {e}")
-        conn.rollback()  # Revenir à l'état précédent en cas d'erreur
+        conn.rollback()
     finally:
         cur.close()
         conn.close()
 
 def send_welcome_email(email, name):
-    """Envoie un e-mail de bienvenue à l'utilisateur nouvellement inscrit."""
     subject = "Bienvenue aux informations sur les opportunités d'études"
     body = f"Bonjour {name},\n\nVous recevrez désormais des informations sur les nouvelles opportunités d'études disponibles.\n\nCordialement,\nL'équipe."
     
-    # Créer l'e-mail
     msg = MIMEText(body)
     msg["Subject"] = subject
     msg["From"] = SMTP_USERNAME
     msg["To"] = email
     
-    # Envoi de l'e-mail via SMTP
     try:
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
-        server.starttls()  # Sécuriser la connexion
+        server.starttls()
         server.login(SMTP_USERNAME, SMTP_PASSWORD)
         server.sendmail(SMTP_USERNAME, email, msg.as_string())
         server.quit()
@@ -238,20 +213,17 @@ def login():
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
-    # Préparer la requête d'authentification
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
-        redirect_uri="http://127.0.0.1:5000/login/callback",  # redirection après authentification
+        redirect_uri="http://127.0.0.1:5000/login/callback",
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
 
 @auth_blueprint.route("/login/callback")
 def callback():
-    # Obtenir le code d'autorisation
     code = request.args.get("code")
 
-    # Échanger le code d'autorisation contre un jeton d'accès
     google_provider_cfg = get_google_provider_cfg()
     token_endpoint = google_provider_cfg["token_endpoint"]
     token_url, headers, body = client.prepare_token_request(
@@ -267,29 +239,22 @@ def callback():
         auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
     )
 
-    # Vérifier le statut de la réponse
     if token_response.status_code != 200:
-        return "Erreur lors de l'échange du code d'autorisation.", 400
+        return redirect(url_for('index', message="Erreur lors de l'échange du code d'autorisation.", is_error=True))
 
-    # Parser la réponse du jeton
     client.parse_request_body_response(token_response.text)
-
-    # Obtenir les informations de l'utilisateur depuis Google
     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
     uri, headers, body = client.add_token(userinfo_endpoint)
     userinfo_response = requests.get(uri, headers=headers, data=body)
 
-    # Vérifier le statut de la réponse des informations utilisateur
     if userinfo_response.status_code != 200:
-        return "Erreur lors de la récupération des informations de l'utilisateur.", 400
+        return redirect(url_for('index', message="Erreur lors de la récupération des informations de l'utilisateur.", is_error=True))
 
-    # Extraire et stocker l'e-mail et le nom de l'utilisateur
     userinfo = userinfo_response.json()
     if userinfo.get("email_verified"):
         email = userinfo["email"]
         name = userinfo.get("name", "Nom inconnu")
 
-        # Stocker l'e-mail et le nom dans PostgreSQL
         conn = get_db_connection()
         cur = conn.cursor()
         try:
@@ -301,18 +266,17 @@ def callback():
             if cur.rowcount > 0:
                 send_welcome_email(email, name)
                 message = f"Email {email} et nom {name} enregistrés avec succès ! Un e-mail de bienvenue a été envoyé."
+                return redirect(url_for('index', message=message, is_error=False))
             else:
                 message = f"L'utilisateur avec l'email {email} existe déjà."
+                return redirect(url_for('index', message=message, is_error=True))
         except Exception as e:
             conn.rollback()
-            return f"Erreur lors de l'enregistrement : {e}", 500
+            return redirect(url_for('index', message=f"Erreur lors de l'enregistrement : {e}", is_error=True))
         finally:
             cur.close()
             conn.close()
-
-        return message
-
-    return "Erreur : l'utilisateur n'a pas de compte Google vérifié.", 400
+    return redirect(url_for('index', message="Erreur : l'utilisateur n'a pas de compte Google vérifié.", is_error=True))
 
 def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json()
