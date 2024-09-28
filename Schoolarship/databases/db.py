@@ -234,3 +234,50 @@ def get_all_bourses(search_term=None):
         'stages': convert_conditions_to_list(stages),
         'formations': convert_conditions_to_list(formations)
     }
+
+import ast
+
+def convert_conditions_to_liste(bourse):
+    """Convertit le champ 'Conditions' de la bourse en liste s'il contient des crochets, sinon le laisse tel quel."""
+    try:
+        # Essaye de convertir le champ Conditions
+        conditions = bourse[8]  # Remplace 8 par l'index correct si nécessaire
+        if isinstance(conditions, str) and (conditions.startswith('[') and conditions.endswith(']')):
+            # Si c'est une chaîne qui ressemble à une liste
+            conditions_list = ast.literal_eval(conditions)
+            # Conserve seulement les 2 premiers liens
+            return (*bourse[:8], conditions_list[:2], *bourse[9:])  # Remplace l'index 8 par la liste
+        else:
+            # Sinon, laisse le champ tel quel
+            return (*bourse[:8], conditions, *bourse[9:])
+    except Exception as e:
+        print(f"Erreur lors de la conversion des conditions: {e}")
+        return bourse  # Retourne la bourse d'origine en cas d'erreur
+
+
+# def get_db_connection():
+#     """Crée et retourne une connexion à la base de données PostgreSQL."""
+#     conn = psycopg2.connect(
+#         host=os.getenv('DB_HOST'),
+#         database=os.getenv('DB_NAME'),
+#         user=os.getenv('DB_USER'),
+#         password=os.getenv('DB_PASSWORD'),
+#         port=os.getenv('DB_PORT')
+#     )
+#     return conn
+
+def get_bourse_by_id(bourse_id):
+    """Récupère une bourse de la base de données en fonction de son ID."""
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    # Exécuter la requête pour récupérer la bourse par ID
+    cur.execute("SELECT * FROM opportunities_etudes WHERE id = %s", (bourse_id,))
+    bourse = cur.fetchone()
+    bourse = convert_conditions_to_liste(bourse)
+
+    # Fermer le curseur et la connexion
+    cur.close()
+    conn.close()
+
+    return bourse
