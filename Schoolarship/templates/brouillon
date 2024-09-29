@@ -512,3 +512,316 @@
 </table>
 
 {% endblock %}
+
+################################ 29-09-2024 ################################
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Inclure SweetAlert2 CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> -->
+
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<!-- Inclure le fichier JavaScript que nous avons créé -->
+<script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+
+
+<!-- Liste de bourses -->
+<h1>Liste des Bourses</h1>
+
+<!-- Inclure le formulaire de recherche -->
+{% include 'includes/search_form.html' %}
+
+
+<!-- Affichage des bourses -->
+<div class="bourses-container">
+    <div class="row">
+        {% for bourse in opportunities %}
+            <div class="col-4">
+                <div class="bourse-item">
+                    <!-- Image selon le type de bourse -->
+                    {% if bourse[3] == "Bourse" %}
+                        <img src="{{ url_for('static', filename='images/bourse.png') }}" alt="Bourse" style="width: 100px; height: 100px;">
+                    {% elif bourse[3] == "Stage" %}
+                        <img src="{{ url_for('static', filename='images/stage.jpeg') }}" alt="Stage" style="width: 100px; height: 100px;">
+                    {% elif bourse[3] == "Formation" %}
+                        <img src="{{ url_for('static', filename='images/formation.jpeg') }}" alt="Formation" style="width: 100px; height: 100px;">
+                    {% endif %}
+                    
+                    <!-- Titre, pays, description, et bouton "Voir plus" -->
+                    <h3>{{ bourse[2] }}</h3> <!-- Titre -->
+                    <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
+                    <p>{{ bourse[4][:100] }}...</p> <!-- Description abrégée -->
+                    <a href="{{ url_for('details', bourse_id=bourse[0]) }}" class="btn btn-primary">Voir plus</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="pagination">
+    {% if page > 1 %}
+        <a href="?page={{ page - 1 }}&per_page={{ per_page }}">Précédent</a>
+    {% endif %}
+
+    <span>Page {{ page }}</span>
+
+    {% if page * per_page < total %}
+        <a href="?page={{ page + 1 }}&per_page={{ per_page }}">Suivant</a>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+################################
+
+
+
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Inclure SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- Inclure SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+<!-- Inclure le fichier JavaScript que nous avons créé -->
+<script src="{{ url_for('static', filename='js/popup.js') }}"></script>
+
+<!-- Style CSS intégré -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    .bourses-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+        gap: 20px; /* Espacement entre les éléments */
+        margin-top: 20px;
+    }
+
+    .bourse-item {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .bourse-image {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+    }
+
+    .pagination {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .pagination a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .pagination span {
+        font-weight: bold;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .bourses-container {
+            grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur écrans moyens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .bourses-container {
+            grid-template-columns: 1fr; /* 1 colonne sur petits écrans */
+        }
+    }
+</style>
+
+<!-- Liste de bourses -->
+<h1>Liste des Bourses</h1>
+
+<!-- Inclure le formulaire de recherche -->
+{% include 'includes/search_form.html' %}
+
+<!-- Affichage des bourses -->
+<div class="bourses-container">
+    {% for bourse in opportunities %}
+        <div class="bourse-item">
+            <!-- Image selon le type de bourse -->
+            {% if bourse[3] == "Bourse" %}
+                <img src="{{ url_for('static', filename='images/bourse.png') }}" alt="Bourse" class="bourse-image">
+            {% elif bourse[3] == "Stage" %}
+                <img src="{{ url_for('static', filename='images/stage.jpeg') }}" alt="Stage" class="bourse-image">
+            {% elif bourse[3] == "Formation" %}
+                <img src="{{ url_for('static', filename='images/formation.jpeg') }}" alt="Formation" class="bourse-image">
+            {% endif %}
+            
+            <!-- Titre, pays, description, et bouton "Voir plus" -->
+            <h3>{{ bourse[2] }}</h3> <!-- Titre -->
+            <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
+            <p>{{ bourse[4][:100] }}...</p> <!-- Description abrégée -->
+            <a href="{{ url_for('details', bourse_id=bourse[0]) }}" class="btn">Voir plus</a>
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+    {% if page > 1 %}
+        <a href="?page={{ page - 1 }}&per_page={{ per_page }}">Précédent</a>
+    {% endif %}
+
+    <span>Page {{ page }}</span>
+
+    {% if page * per_page < total %}
+        <a href="?page={{ page + 1 }}&per_page={{ per_page }}">Suivant</a>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+################################
+
+<footer style="background-color: #333; color: #fff; padding: 20px 0;  ">
+    <div style="display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap;">
+        
+        <!-- Section Liens utiles -->
+        <div style="flex: 1; min-width: 200px; text-align: center;">
+            <h3 style="color: #fff;">Liens utiles</h3>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="margin: 10px 0;">
+                    <a href="https://uv.bf/" target="_blank" class="footer-link">Université Virtuelle du Burkina Faso</a>
+                </li>
+                <!-- Ajouter d'autres liens ici -->
+
+                <li style="margin: 10px 0;"></li>
+                    <a href="https://citadel.bf/" target="_blank" class="footer-link">CITADEL</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+        <!-- Section Contacts -->
+        <div style="flex: 1; min-width: 200px; text-align: center;">
+            <h3 style="color: #fff;">Contacts</h3>
+            <ul style="list-style-type: none; padding: 0;">
+
+                <li style="margin: 10px 0;"></li>
+                    <img src="{{ url_for('static', filename='images/email.jpeg') }}" alt="Email" style="width: 20px; height: 20px; vertical-align: middle;">
+                    <a href="mailto:fiarmalandrysomeda@gmail.com" class="footer-link">fiarmalandrysomeda@gmail.com</a>
+                </li>
+
+                <li style="margin: 10px 0;">
+                    <img src="{{ url_for('static', filename='images/whatsapp.jpeg') }}" alt="WhatsApp" style="width: 20px; height: 20px; vertical-align: middle;">
+                    <a href="https://wa.me/22667489187" target="_blank" class="footer-link">+226 67 48 91 87</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div style="text-align: center; margin-top: 20px;">
+        <p>&copy; {{ current_year }} Bachelor's Degree 3 in Software Engineering Option Data Analysis .</p>
+        
+    </div>
+</footer>
+
+<!-- Styles supplémentaires -->
+<style>
+    /* Style par défaut pour les liens */
+    .footer-link {
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease;
+    }
+
+    /* Changement de couleur lors du survol */
+    .footer-link:hover {
+        color: #00ff7f; /* Couleur survolée : vert clair */
+    }
+</style>
+
+
+################################
+footer {
+    background-color: #444; /* Un ton légèrement différent */
+    color: #fff;
+    padding: 30px 20px; /* Plus d'espacement */
+    text-align: left; /* Aligner le texte à gauche */
+}
+
+footer div {
+    display: flex;
+    justify-content: space-between; /* Espacement uniforme */
+    flex-wrap: wrap; /* Permet aux éléments de se réorganiser sur plusieurs lignes */
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px; /* Largeur minimale */
+    margin: 0 10px; /* Espacement entre les sections */
+}
+
+.footer-section h3 {
+    color: #ffcc00; /* Couleur différente pour les titres */
+    margin-bottom: 15px; /* Espacement en bas des titres */
+}
+
+.footer-section ul {
+    list-style-type: none; /* Pas de puces */
+    padding: 0; /* Pas de padding */
+}
+
+.footer-section li {
+    margin: 10px 0; /* Espacement entre les éléments de la liste */
+}
+
+.footer-copyright {
+    text-align: center; /* Centrer le texte du copyright */
+    margin-top: 20px; /* Espacement au-dessus */
+    font-size: 0.9em; /* Taille de police légèrement plus petite */
+    border-top: 1px solid #666; /* Ligne de séparation en haut */
+    padding-top: 10px; /* Espacement au-dessus de la ligne */
+}
+
+/* Styles supplémentaires */
+.footer-link {
+    text-decoration: none; /* Pas de soulignement */
+    color: #ffcc00; /* Couleur des liens */
+    transition: color 0.3s ease; /* Effet de transition */
+}
+
+.footer-link:hover {
+    color: #00ff7f; /* Couleur au survol */
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle; /* Alignement vertical */
+    margin-right: 8px; /* Espacement entre l'icône et le texte */
+}

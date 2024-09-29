@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from users.users_authentification import auth_blueprint, create_users_table
 from databases.db import get_all_bourses, get_bourse_by_id  # Importer la fonction qui récupère les données de la base
 from utils.utils import install_python_dependencies, install_chrome_and_chromedriver
-
+import datetime
 load_dotenv()  # Charge les variables d'environnement à partir du fichier .env
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -52,6 +52,10 @@ def details(bourse_id):
         return render_template('detail.html', bourse=bourse)  # Remplace 'detail.html' par ton template
     else:
         return "Bourse non trouvée", 404
+    
+@app.context_processor
+def inject_current_year():
+    return {'current_year': datetime.datetime.now().year}
     
 @app.route('/bourses', methods=['GET'])
 def afficher_bourses():
