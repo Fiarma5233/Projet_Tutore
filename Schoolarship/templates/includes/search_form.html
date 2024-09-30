@@ -1,15 +1,15 @@
-<!-- Formulaire de recherche
-<form method="GET" action="{{ url_for('index') }}">
-    <input type="text" name="search" placeholder="Recherche par Pays, Titre, Niveau" required>
-    <button type="submit">Rechercher</button>
-</form> -->
+
 
 
 <!-- Formulaire de recherche -->
-<form method="GET" action="{{ url_for('index') }}" class="search-form">
+<form method="GET" action="{{ request.path }}" class="search-form">
     <input type="text" name="search" placeholder="Recherche par Pays, Titre, Niveau" required>
     <button type="submit">Rechercher</button>
 </form>
+
+{% if messages %}
+    <div class="alert-message">{{ messages }}</div>
+{% endif %}
 
 <!-- Style CSS intégré -->
 <style>
@@ -42,6 +42,15 @@
 
     .search-form button:hover {
         background-color: #0056b3; /* Couleur au survol */
+    }
+
+    /* Style pour le message d'alerte */
+    .alert-message {
+        margin-top: 15px; /* Marges pour espacer le message */
+        padding: 10px; /* Espacement interne */
+        border-radius: 5px; /* Coins arrondis */
+        color: rebeccapurple; /* Couleur du texte rouge foncé */
+        text-align: center; /* Centrer le texte */
     }
 
     /* Responsive Design */

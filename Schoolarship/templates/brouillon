@@ -855,3 +855,135 @@ footer div {
 
     {% endblock footer %}
 </html> -->
+
+
+################################
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Détails de la Bourse</h1>
+
+<div class="bourse-details">
+    <h2>{{ bourse[2] }}</h2> <!-- Titre -->
+    <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
+    <p><strong>Type :</strong> {{ bourse[3] }}</p> <!-- Type -->
+    <p><strong>Description :</strong> {{ bourse[4] }}</p> <!-- Description -->
+    <p><strong>Niveau :</strong> {{ bourse[5] }}</p> <!-- Niveau -->
+    <p><strong>Financement :</strong> 
+        {% if bourse[6].startswith('https://') %}
+                <a href="{{ bourse[6] }}" target="_blank">{{ bourse[6] }}</a>
+            {% else %}
+                {{ bourse[6] }}
+            {% endif %}
+    </p> <!-- Financement -->
+
+    <p><strong>Date Limite :</strong> {{ bourse[7] }}</p> <!-- Date Limite -->
+
+    <p>
+        <strong>Conditions :</strong> 
+        {% if bourse[8] is iterable and not bourse[8] is string %}
+                {% set links = bourse[8] %}
+                {% for lien in links[:2] %}
+                    <a href="{{ lien }}" target="_blank">{{ lien }}</a><br>
+                {% endfor %}
+            {% else %}
+                <a href="{{ bourse[8] }}" target="_blank">{{ bourse[8] }}</a>
+            {% endif %}
+
+    </p> <!-- Date Limite -->
+    <p><strong>Nombre de bourses :</strong>
+         {{ bourse[9] }}
+        </p> <!-- Nombre de bourses -->
+    <p><strong>Domaine Concerné :</strong> 
+        {% if bourse[10].startswith('https://') %}
+                <a href="{{ bourse[10] }}" target="_blank">{{ bourse[10] }}</a>
+            {% else %}
+                {{ bourse[10] }}
+            {% endif %}
+    </p> <!-- Domaine Concerné -->
+
+    <p><strong>Durée d'étude :</strong> 
+        {% if bourse[11].startswith('https://') %}
+        <a href="{{ bourse[11] }}" target="_blank">{{ bourse[11] }}</a>
+        {% else %}
+            {{ bourse[11] }}
+        {% endif %}
+    </p> <!-- Durée d'étude -->
+
+    <p><strong>Pays éligibles :</strong> 
+        {% if bourse[12].startswith('https://') %}
+        <a href="{{ bourse[12] }}" target="_blank">{{ bourse[12] }}</a>
+        {% else %}
+            {{ bourse[12] }}
+        {% endif %}
+    </p> <!-- Pays éligibles -->
+
+    <!-- Ajoutez d'autres détails de la bourse ici -->
+</div>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Retour à la liste</a>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+
+{% endblock %}
+
+################################ search_form
+
+
+<!-- Formulaire de recherche -->
+<form method="GET" action="{{ request.path }}" class="search-form">
+    <input type="text" name="search" placeholder="Recherche par Pays, Titre, Niveau" required>
+    <button type="submit">Rechercher</button>
+</form>
+
+{% if messages %}
+    <div class="alert alert-info">{{ messages }}</div>
+{% endif %}
+
+
+<!-- Style CSS intégré -->
+<style>
+    .search-form {
+        display: flex; /* Utiliser flexbox pour l'alignement */
+        justify-content: center; /* Centrer horizontalement */
+        margin: 20px 0; /* Marges pour le haut et le bas */
+        gap: 10px; /* Espace entre le champ de recherche et le bouton */
+    }
+
+    .search-form input {
+        padding: 10px; /* Espacement interne pour le champ de recherche */
+        border: 1px solid #ddd; /* Bordure grise */
+        border-radius: 5px; /* Coins arrondis */
+        width: 100%; /* Prendre toute la largeur disponible */
+        max-width: 300px; /* Largeur maximale pour les grands écrans */
+        font-size: 16px; /* Taille de la police */
+    }
+
+    .search-form button {
+        padding: 10px 15px; /* Espacement interne pour le bouton */
+        border: none; /* Pas de bordure */
+        border-radius: 5px; /* Coins arrondis */
+        background-color: #007bff; /* Couleur de fond bleue */
+        color: white; /* Couleur du texte en blanc */
+        font-size: 16px; /* Taille de la police */
+        cursor: pointer; /* Changer le curseur au survol */
+        transition: background-color 0.3s; /* Transition pour le survol */
+    }
+
+    .search-form button:hover {
+        background-color: #0056b3; /* Couleur au survol */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+        .search-form {
+            flex-direction: column; /* Passer en colonne sur petits écrans */
+            align-items: center; /* Centrer les éléments */
+        }
+
+        .search-form input,
+        .search-form button {
+            width: 100%; /* Prendre toute la largeur sur petits écrans */
+            max-width: none; /* Retirer la largeur maximale */
+        }
+    }
+</style>
