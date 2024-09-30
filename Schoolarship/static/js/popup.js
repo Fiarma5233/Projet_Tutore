@@ -87,3 +87,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     {% endif %}
 });
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Vérifie si l'utilisateur a déjà répondu au popup
+//     if (!localStorage.getItem('popupShown')) {
+//         Swal.fire({
+//             title: "Souhaitez-vous recevoir des informations ?",
+//             text: "Souhaitez-vous recevoir prochainement des informations sur les nouvelles opportunités disponibles ?",
+//             icon: "warning",
+//             showCancelButton: true,
+//             confirmButtonText: "Oui",
+//             cancelButtonText: "Non"
+//         }).then((result) => {
+//             if (result.isConfirmed) {
+//                 window.location.href = "/login";
+//             } else {
+//                 localStorage.setItem('popupShown', 'true');
+//             }
+//         });
+//     }
+// });

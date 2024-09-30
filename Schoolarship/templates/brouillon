@@ -825,3 +825,33 @@ footer div {
     vertical-align: middle; /* Alignement vertical */
     margin-right: 8px; /* Espacement entre l'icône et le texte */
 }
+
+################################ 30-09-2024    ################################
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/image.ico') }}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Scholarship</title>
+</head>
+<body>
+    
+    {% include "includes/navbar.html" %} 
+    
+    {% block content %}
+    
+
+    {% endblock content %} 
+    
+</body>
+
+    {% block footer %}
+        {% include 'includes/footer.html' %}
+
+    {% endblock footer %}
+</html> -->
