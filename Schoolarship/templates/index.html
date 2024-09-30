@@ -19,7 +19,7 @@
     <div class="content">
 
                 <!-- Liste de bourses -->
-        <h1>Liste des Bourses</h1>
+        <h1>Opportunites d'etudes</h1>
 
         <!-- Inclure le formulaire de recherche -->
         {% include 'includes/search_form.html' %}
@@ -41,7 +41,7 @@
                     <h3>{{ bourse[2] }}</h3> <!-- Titre -->
                     <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
                     <p>{{ bourse[4][:100] }}...</p> <!-- Description abrégée -->
-                    <a href="{{ url_for('details', bourse_id=bourse[0]) }}" class="btn">Voir plus</a>
+                    <a href="{{ url_for('details', bourse_id=bourse[0], section='opportunites') }}" class="btn">Voir plus</a>
                 </div>
             {% endfor %}
         </div>

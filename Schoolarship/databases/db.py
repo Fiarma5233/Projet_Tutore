@@ -218,6 +218,8 @@ def get_all_bourses(search_term=None):
             bourse for bourse in bourses 
             if search_term.lower() in (bourse[1].lower(), bourse[2].lower(), bourse[5].lower())
         ]
+
+        
         stages = [
             stage for stage in stages 
             if search_term.lower() in (stage[1].lower(), stage[2].lower(), stage[5].lower())
@@ -234,6 +236,132 @@ def get_all_bourses(search_term=None):
         'stages': convert_conditions_to_list(stages),
         'formations': convert_conditions_to_list(formations)
     }
+
+
+# def get_all_bourses(search_term=None, rubrique=None):
+#     """Récupère toutes les bourses, stages et formations de la base de données, avec possibilité de recherche."""
+#     conn = get_db_connection()
+#     cur = conn.cursor()
+
+#     # Exécuter la requête pour récupérer toutes les bourses
+#     cur.execute('SELECT * FROM opportunities_etudes')
+#     toutes_les_bourses = cur.fetchall()
+#     toutes_les_bourses = convert_conditions_to_list(toutes_les_bourses)
+
+#     # Récupérer les bourses, stages et formations
+#     cur.execute("SELECT * FROM opportunities_etudes WHERE type = 'Bourse'")
+#     bourses = cur.fetchall()
+
+#     cur.execute("SELECT * FROM opportunities_etudes WHERE type = 'Stage'")
+#     stages = cur.fetchall()
+
+#     cur.execute("SELECT * FROM opportunities_etudes WHERE type = 'Formation'")
+#     formations = cur.fetchall()
+
+#     # Fermer le curseur et la connexion
+#     cur.close()
+#     conn.close()
+
+#     # Filtrer les résultats si un terme de recherche est fourni et en fonction de la rubrique
+#     if search_term:
+#         if rubrique == 'bourses':
+#             bourses = [
+#                 bourse for bourse in bourses 
+#                 if search_term.lower() in (bourse[1].lower(), bourse[2].lower(), bourse[5].lower())
+#             ]
+#             return {
+#                 'bourses': convert_conditions_to_list(bourses)
+#             }
+#         elif rubrique == 'stages':
+#             stages = [
+#                 stage for stage in stages 
+#                 if search_term.lower() in (stage[1].lower(), stage[2].lower(), stage[5].lower())
+#             ]
+#             return {
+#                 'stages': convert_conditions_to_list(stages)
+#             }
+#         elif rubrique == 'formations':
+#             formations = [
+#                 formation for formation in formations 
+#                 if search_term.lower() in (formation[1].lower(), formation[2].lower(), formation[5].lower())
+#             ]
+#             return {
+#                 'formations': convert_conditions_to_list(formations)
+#             }
+#         else:
+#             toutes_les_bourses = [
+#                 bourse for bourse in toutes_les_bourses 
+#                 if search_term.lower() in (bourse[1].lower(), bourse[2].lower(), bourse[5].lower())
+#             ]
+
+#     # Retourner un dictionnaire contenant toutes les bourses
+#     return {
+#         'toutes_les_bourses': convert_conditions_to_list(toutes_les_bourses),
+#         'bourses': convert_conditions_to_list(bourses),
+#         'stages': convert_conditions_to_list(stages),
+#         'formations': convert_conditions_to_list(formations)
+#     }
+
+# def get_all_bourses(search_term=None, type=None):
+#     """Récupère toutes les bourses, stages et formations de la base de données, avec possibilité de recherche."""
+#     conn = get_db_connection()
+#     cur = conn.cursor()
+
+#     # Si un type est spécifié, récupérez uniquement les opportunités de ce type
+#     if type:
+#         cur.execute("SELECT * FROM opportunities_etudes WHERE type = %s", (type,))
+#     else:
+#         cur.execute("SELECT * FROM opportunities_etudes")
+    
+#     toutes_les_bourses = cur.fetchall()
+#     toutes_les_bourses = convert_conditions_to_list(toutes_les_bourses)
+
+#     # Récupérer les bourses, stages et formations
+#     bourses = []
+#     stages = []
+#     formations = []
+
+#     # Filtrer les résultats selon le type
+#     if type == 'Bourse':
+#         bourses = toutes_les_bourses
+#     elif type == 'Stage':
+#         stages = toutes_les_bourses
+#     elif type == 'Formation':
+#         formations = toutes_les_bourses
+
+#     # Fermer le curseur et la connexion
+#     cur.close()
+#     conn.close()
+
+#     # Filtrer les résultats si un terme de recherche est fourni
+#     if search_term:
+#         toutes_les_bourses = [
+#             bourse for bourse in toutes_les_bourses 
+#             if search_term.lower() in (bourse[1].lower(), bourse[2].lower(), bourse[5].lower())
+#         ]
+#         if type == 'Bourse':
+#             bourses = [
+#                 bourse for bourse in bourses 
+#                 if search_term.lower() in (bourse[1].lower(), bourse[2].lower(), bourse[5].lower())
+#             ]
+#         elif type == 'Stage':
+#             stages = [
+#                 stage for stage in stages 
+#                 if search_term.lower() in (stage[1].lower(), stage[2].lower(), stage[5].lower())
+#             ]
+#         elif type == 'Formation':
+#             formations = [
+#                 formation for formation in formations 
+#                 if search_term.lower() in (formation[1].lower(), formation[2].lower(), formation[5].lower())
+#             ]
+
+#     # Retourner un dictionnaire contenant toutes les bourses
+#     return {
+#         'toutes_les_bourses': convert_conditions_to_list(toutes_les_bourses),
+#         'bourses': convert_conditions_to_list(bourses),
+#         'stages': convert_conditions_to_list(stages),
+#         'formations': convert_conditions_to_list(formations)
+#     }
 
 import ast
 

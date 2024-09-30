@@ -15,11 +15,12 @@
 {% block content %}
 
 
+
 <div class="wrapper">
     <div class="content">
 
                 <!-- Liste de bourses -->
-        <h1>Bourses disponibles</h1>
+        <h1>Stages disponibles</h1>
 
         <!-- Inclure le formulaire de recherche -->
         {% include 'includes/search_form.html' %}
@@ -29,14 +30,14 @@
             {% for bourse in opportunities %}
                 <div class="bourse-item">
                    
-                        <img src="{{ url_for('static', filename='images/bourse.png') }}" alt="Bourse" class="bourse-image">
+                    <img src="{{ url_for('static', filename='images/stage.jpeg') }}" alt="Stage" class="bourse-image">
                     
                     
                     <!-- Titre, pays, description, et bouton "Voir plus" -->
                     <h3>{{ bourse[2] }}</h3> <!-- Titre -->
                     <p><strong>Pays :</strong> {{ bourse[1] }}</p> <!-- Pays -->
                     <p>{{ bourse[4][:100] }}...</p> <!-- Description abrégée -->
-                    <a href="{{ url_for('details', bourse_id=bourse[0], section='bourses') }}" class="btn">Voir plus</a>
+                    <a href="{{ url_for('details', bourse_id=bourse[0], section='stages') }}" class="btn">Voir plus</a>
                 </div>
             {% endfor %}
         </div>
@@ -57,11 +58,3 @@
         
 
 {% endblock content %}
-
-
-
-
-
- 
-
- 
