@@ -151,6 +151,9 @@ from email.mime.text import MIMEText
 from dotenv import load_dotenv
 from databases.db import get_db_connection
 
+from email.mime.multipart import MIMEMultipart
+from jinja2 import Environment, FileSystemLoader
+
 # Charger les variables d'environnement
 load_dotenv()
 
@@ -189,15 +192,46 @@ def create_users_table():
         cur.close()
         conn.close()
 
+# def send_welcome_email(email, name):
+#     subject = "Bienvenue aux informations sur les opportunités d'études"
+#     body = f"Bonjour {name},\n\nVous recevrez désormais des informations sur les nouvelles opportunités d'études disponibles.\n\nCordialement,\nL'équipe."
+    
+#     msg = MIMEText(body)
+#     msg["Subject"] = subject
+#     msg["From"] = SMTP_USERNAME
+#     msg["To"] = email
+    
+#     try:
+#         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+#         server.starttls()
+#         server.login(SMTP_USERNAME, SMTP_PASSWORD)
+#         server.sendmail(SMTP_USERNAME, email, msg.as_string())
+#         server.quit()
+#         print(f"E-mail envoyé avec succès à {email}")
+#     except smtplib.SMTPException as e:
+#         print(f"Erreur lors de l'envoi de l'e-mail à {email}: {e}")
+
+##################
+
 def send_welcome_email(email, name):
+
+    # Configuration de l'environnement Jinja2 pour charger les templates
+    env = Environment(loader=FileSystemLoader('templates'))
+    env.globals['url_for'] = url_for  # Ajoute url_for aux globals de Jinja2
+
+    template = env.get_template('welcome_email.html')  # Template HTML créé auparavant
+# Rendu du template avec les données utilisateur et stages
+    html_content = template.render(email=email, name=name)
     subject = "Bienvenue aux informations sur les opportunités d'études"
     body = f"Bonjour {name},\n\nVous recevrez désormais des informations sur les nouvelles opportunités d'études disponibles.\n\nCordialement,\nL'équipe."
     
-    msg = MIMEText(body)
+    msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = SMTP_USERNAME
     msg["To"] = email
-    
+    # Attacher le contenu HTML à l'email
+    msg.attach(MIMEText(html_content, 'html'))
+
     try:
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
         server.starttls()
@@ -207,6 +241,8 @@ def send_welcome_email(email, name):
         print(f"E-mail envoyé avec succès à {email}")
     except smtplib.SMTPException as e:
         print(f"Erreur lors de l'envoi de l'e-mail à {email}: {e}")
+
+
 
 @auth_blueprint.route("/login")
 def login():
