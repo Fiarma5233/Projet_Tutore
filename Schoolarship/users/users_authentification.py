@@ -240,7 +240,7 @@ def callback():
     )
 
     if token_response.status_code != 200:
-        return redirect(url_for('index', message="Erreur lors de l'échange du code d'autorisation.", is_error=True))
+        return redirect(url_for('opportunites', message="Erreur lors de l'échange du code d'autorisation.", is_error=True))
 
     client.parse_request_body_response(token_response.text)
     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
@@ -248,7 +248,7 @@ def callback():
     userinfo_response = requests.get(uri, headers=headers, data=body)
 
     if userinfo_response.status_code != 200:
-        return redirect(url_for('index', message="Erreur lors de la récupération des informations de l'utilisateur.", is_error=True))
+        return redirect(url_for('opportunites', message="Erreur lors de la récupération des informations de l'utilisateur.", is_error=True))
 
     userinfo = userinfo_response.json()
     if userinfo.get("email_verified"):
@@ -266,17 +266,17 @@ def callback():
             if cur.rowcount > 0:
                 send_welcome_email(email, name)
                 message = f"Email {email} et nom {name} enregistrés avec succès ! Un e-mail de bienvenue a été envoyé."
-                return redirect(url_for('index', message=message, is_error=False))
+                return redirect(url_for('opportunites', message=message, is_error=False))
             else:
                 message = f"L'utilisateur avec l'email {email} existe déjà."
-                return redirect(url_for('index', message=message, is_error=True))
+                return redirect(url_for('opportunites', message=message, is_error=True))
         except Exception as e:
             conn.rollback()
-            return redirect(url_for('index', message=f"Erreur lors de l'enregistrement : {e}", is_error=True))
+            return redirect(url_for('opportunites', message=f"Erreur lors de l'enregistrement : {e}", is_error=True))
         finally:
             cur.close()
             conn.close()
-    return redirect(url_for('index', message="Erreur : l'utilisateur n'a pas de compte Google vérifié.", is_error=True))
+    return redirect(url_for('opportunites', message="Erreur : l'utilisateur n'a pas de compte Google vérifié.", is_error=True))
 
 def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json()

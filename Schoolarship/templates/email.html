@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/detail.css">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Bonjour {{ nom }} !</h1> <!-- Salutation personnalisée -->
+
+<h2>Détails des Bourses Disponibles</h2>
+
+{% for stage in stages %}
+
+<br>
+<br>
+<div class="bourse-details">
+    <h3>{{ stage[2] }}</h3> <!-- Titre -->
+
+    <!-- Bouton de retour en haut à droite -->
+
+    <div class="details-container">
+        <div class="description-column">
+            <h4>Description</h4>
+            <p>
+                {% if stage[4].startswith('https://') %}
+                    <a href="{{ stage[4] }}" target="_blank">{{ stage[4] }}</a>
+                {% else %}
+                    {{ stage[4] }}
+                {% endif %}
+            </p> <!-- Description -->
+        </div>
+        <div class="info-column">
+            <h4>Détails</h4>
+            <p><strong>Pays :</strong> {{ stage[1] }}</p> <!-- Pays -->
+            <p><strong>Type :</strong> {{ stage[3] }}</p> <!-- Type -->
+            <p><strong>Niveau :</strong> {{ stage[5] }}</p> <!-- Niveau -->
+            <p><strong>Date Limite :</strong> {{ stage[7] }}</p> <!-- Date Limite -->
+            <p><strong>Nombre de bourses :</strong> {{ stage[9] }}</p> <!-- Nombre de bourses -->
+            <p><strong>Domaine Concerné :</strong>
+                {% if stage[10].startswith('https://') %}
+                    <a href="{{ stage[10] }}" target="_blank">{{ stage[10] }}</a>
+                {% else %}
+                    {{ stage[10] }}
+                {% endif %}
+            </p> <!-- Domaine Concerné -->
+            <p><strong>Durée d'étude :</strong>
+                {% if stage[11].startswith('https://') %}
+                    <a href="{{ stage[11] }}" target="_blank">{{ stage[11] }}</a>
+                {% else %}
+                    {{ stage[11] }}
+                {% endif %}
+            </p> <!-- Durée d'étude -->
+            <p><strong>Pays éligibles :</strong>
+                {% if stage[12].startswith('https://') %}
+                    <a href="{{ stage[12] }}" target="_blank">{{ stage[12] }}</a>
+                {% else %}
+                    {{ stage[12] }}
+                {% endif %}
+            </p> <!-- Pays éligibles -->
+            <p><strong>Financement :</strong>
+                {% if stage[6].startswith('https://') %}
+                    <a href="{{ stage[6] }}" target="_blank">{{ stage[6] }}</a>
+                {% else %}
+                    {{ stage[6] }}
+                {% endif %}
+            </p> <!-- Financement -->
+            <p><strong>Conditions :</strong>
+                {% if stage[8] is iterable and not stage[8] is string %}
+                    {% set links = stage[8] %}
+                    {% for lien in links[:2] %}
+                        <a href="{{ lien }}" target="_blank">{{ lien }}</a><br>
+                    {% endfor %}
+                {% else %}
+                    <a href="{{ stage[8] }}" target="_blank">{{ stage[8] }}</a>
+                {% endif %}
+            </p> <!-- Conditions -->
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<!-- Salutation personnalisée -->
+<a href="https://wa.me/22667489187" target="_blank" class="footer-link"><h1>SOME Fiarma Landry </h1> </a>
+
+</body>
+</html>
+
