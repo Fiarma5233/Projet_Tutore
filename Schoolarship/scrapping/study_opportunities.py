@@ -4,14 +4,7 @@ import numpy as np
 from datetime import datetime
 from sqlalchemy import create_engine
 import psycopg2
-#from scrapping.bourses_campusfaso import scraper_bourses_campusfaso
-#from . bourses_campusfaso import scraper_bourses_campusfaso
 
-# import sys
-# import os
-
-# # Ajouter le répertoire parent au sys.path
-# sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from scrapping.bourses_campusfaso import scraper_bourses_campusfaso
 
@@ -67,4 +60,4 @@ def scrape_and_store_data():
         print(f"Erreur lors du processus: {str(e)}")
 
 # Appeler la fonction pour exécuter le processus complet
-scrape_and_store_data()
+#scrape_and_store_data()
