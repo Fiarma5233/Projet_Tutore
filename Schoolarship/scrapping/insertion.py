@@ -81,8 +81,8 @@ def insert_data_to_postgres(csv_file, sql_create_table_file):
     insert_query = sql.SQL("""
         INSERT INTO opportunities_etudes (
             pays, titre, type, description, niveau, financement, date_limite,
-            conditions, nombre_de_bourses, domaine_concerne, duree_d_etude, pays_eligibles
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            conditions, nombre_de_bourses, domaine_concerne, duree_d_etude, pays_eligibles,send
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, FALSE)
         ON CONFLICT (pays, titre)
         DO UPDATE SET
             type = EXCLUDED.type,
@@ -123,4 +123,4 @@ def insert_data_to_postgres(csv_file, sql_create_table_file):
     print("Connexion fermée.")
 
 
-insert_data_to_postgres('opportunities_etudes.csv', './databases/postgres_create_tables.sql')
+#insert_data_to_postgres('opportunities_etudes.csv', './databases/postgres_create_tables.sql')
